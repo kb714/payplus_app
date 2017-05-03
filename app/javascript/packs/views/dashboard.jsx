@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Navigation from '../components/dashboard/navigation';
+import Shops from "../components/dashboard/shops";
 
-class Dashboard extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
+class DashboardView extends Component {
     render() {
-        return(<div>Hola mundo</div>);
+        return(
+            <div>
+                <Navigation />
+                <Shops/>
+            </div>
+        );
     }
 }
 
-document.addEventListener("DOMContentLoaded", e => {
-    ReactDOM.render(<Dashboard />, document.body.appendChild(document.createElement('div')))
-})
+document.addEventListener('DOMContentLoaded', () => {
+    ReactDOM.render(
+        <DashboardView />,
+        document.body.appendChild(document.createElement('div')),
+    )
+});

@@ -64,8 +64,8 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'rolify'
 
 # view
+gem 'haml-rails'
 gem 'hamlit'
-gem 'simple_form'
 
 
 # fileupload
