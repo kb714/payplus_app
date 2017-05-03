@@ -8,7 +8,6 @@ class User::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    sleep 2
     resource = User.find_for_database_authentication(email: params[:user][:email])
     return invalid_login_attempt unless resource
 

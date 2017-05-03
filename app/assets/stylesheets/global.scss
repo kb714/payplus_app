@@ -83,7 +83,7 @@ $input-color: $red-color;
 .ant-select-auto-complete.ant-select .ant-input:focus {
   border-color: $input-color;
   outline: 0;
-  box-shadow: 0 0 0 2px darken($red-color, 10);
+  box-shadow: 0 0 0 1px darken($red-color, 10);
 }
 
 .ant-input:hover {
@@ -92,7 +92,7 @@ $input-color: $red-color;
 .ant-input:focus {
   border-color: $input-color;
   outline: 0;
-  box-shadow: 0 0 0 1px darken($red-color, 10);
+  box-shadow: 0 0 0 2px rgba(240,65,52,.2);
 }
 
 .ant-input-affix-wrapper:hover .ant-input {
