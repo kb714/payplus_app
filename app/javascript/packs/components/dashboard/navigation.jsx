@@ -13,17 +13,16 @@ class Navigation extends Component {
     }
 
     componentWillMount(){
-        this.props.initDashboard("desde componente");
+        //this.props.initDashboard("desde componente");
     }
 
     componentWillUpdate(){
-        console.log(this.props.dashboard);
-        alert(this.props.dashboard);
+        console.log('ON WILL UPDATE', this.props.dashboard);
     }
 
-    handleMenu(key){
-        message.info(`Click on item ${key}`);
-        this.props.initDashboard(`Click on item ${key}`);
+    handleMenu(data){
+        console.log('KEY: ', data);
+        this.props.initDashboard(`Click on item ${data.item.props.children}`);
     }
 
     userMenu(){
@@ -33,7 +32,9 @@ class Navigation extends Component {
                 <Menu.Item key="2">Seguridad</Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="3">
-                    <a className="nav-ant-dropdown-link" data-method="delete" href={this.props.logout_url}>Cerrar Sesión</a>
+                    <a className="nav-ant-dropdown-link" data-method="delete" href={this.props.dashboard.logout_url}>
+                        Cerrar Sesión
+                    </a>
                 </Menu.Item>
             </Menu>
         );
@@ -50,13 +51,12 @@ class Navigation extends Component {
                             <Col span={9} className="app-navigation-dropdown text-right">
                                 <Dropdown overlay={this.userMenu()}>
                                     <Button style={{ marginLeft: 8 }} icon="user">
-                                        {this.props.email} <Icon type="down" />
+                                        {this.props.dashboard.email} <Icon type="down" />
                                     </Button>
                                 </Dropdown>
                             </Col>
                         </Row>
                     </div>
-                    {this.props.dashboard.message}
                 </Spin>
             </div>
         );

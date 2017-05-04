@@ -1,1 +1,3 @@
 export const FETCH_LOGIN = 'FETCH_LOGIN';
+//DASHBOARD
+export const INIT_DASHBOARD = 'INIT_DASHBOARD';

@@ -5,20 +5,14 @@ import Shops from "../components/dashboard/shops";
 import { Provider } from 'react-redux';
 import dashboardStore from '../stores/dashboardStore';
 
-const current_user = document.querySelector('body');
-const email = current_user.getAttribute('data-email');
-const logout_url = current_user.getAttribute('data-logout');
-
 const store = dashboardStore();
 
 class DashboardView extends Component {
     render() {
-        console.log('logged with', email);
-        console.log('logout on', logout_url);
         return(
             <Provider store={store}>
                 <div>
-                    <Navigation email={email} logout_url={logout_url} />
+                    <Navigation />
                     <Shops/>
                 </div>
             </Provider>
