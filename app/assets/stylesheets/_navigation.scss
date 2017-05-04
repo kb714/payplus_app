@@ -1,0 +1,28 @@
+@import 'colors';
+
+.top-navigation{
+  padding: 10px 15px;
+  background-color: $red-color;
+  color: $white-color;
+  .app-name{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .app-navigation-dropdown{
+    .ant-dropdown-trigger{
+      background-color: #D32F2F;
+      border: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 13px;
+      &:hover{
+        background-color: #263238;
+        border: none;
+      }
+    }
+  }
+}
+.nav-ant-dropdown-link:hover{
+  color: rgba(0,0,0,.65) !important;
+}

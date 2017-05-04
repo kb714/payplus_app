@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/sessions/login_actions';
+import { login } from '../../actions/sessions/loginActions';
 import { Form, Icon, Input, Button, message } from 'antd';
 const FormItem = Form.Item;
 
@@ -24,7 +24,7 @@ class DeviseLoginForm extends Component {
                         message.success('Inicio correcto, espere un momento', 3);
                         setTimeout(() => {
                             location.reload();
-                        }, 3000)
+                        }, 1000)
                     },
                     (err) => {
                         message.warning('Nombre de usuario o contraseña inválidos', 3);
@@ -68,9 +68,9 @@ class DeviseLoginForm extends Component {
     };
 }
 
-DeviseLoginForm.propTypes = {
-    login: React.PropTypes.func.isRequired
-};
+// DeviseLoginForm.propTypes = {
+//     login: React.PropTypes.func.isRequired
+// };
 
 const LoginForm = Form.create()(DeviseLoginForm);
 

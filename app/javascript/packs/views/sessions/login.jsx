@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from "../../components/sessions/login_form";
+import LoginForm from "../../components/sessions/loginForm";
 import logo from '../../logo.png';
 import {Col, Row, Card} from "antd";
 import loginStore from "../../stores/loginStore";

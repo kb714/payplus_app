@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    sessions: 'user/sessions'
+    sessions: 'devise_override/sessions'
   }
   authenticated :user do
     root 'dashboard#index'
@@ -8,7 +8,13 @@ Rails.application.routes.draw do
 
   unauthenticated do
     devise_scope :user do
-      root 'user/sessions#new'
+      root 'devise_override/sessions#new'
+    end
+  end
+
+  scope :api do
+    scope :v1 do
+      resources :shops, controller: "api/v1/shops"
     end
   end
 
