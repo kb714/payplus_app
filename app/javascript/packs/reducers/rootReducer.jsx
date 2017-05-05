@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import init from './dashboard/initReducer';
+import dashboard from './dashboard/dashboardReducer';
 
 const sessionReducer = combineReducers({
-    dashboard: init
+    dashboard
 });
 
 export default sessionReducer;

@@ -5,13 +5,19 @@ module Api
 
     respond_to :json
     def index
-      respond_to do |response|
-        response.html { redirect_to root_path }
-        response.json {
-          data = current_user.shops.all
-          render json: data
-        }
-      end
+      sleep 3
+      #data = current_user.shops.all
+      data = [
+          {
+             id: 1,
+             name: 'Test'
+          },
+          {
+             id: 2,
+             name: 'Test 2'
+          },
+      ]
+      render json: data
     end
   end
 end

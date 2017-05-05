@@ -13,16 +13,15 @@ class Navigation extends Component {
     }
 
     componentWillMount(){
-        //this.props.initDashboard("desde componente");
+
     }
 
     componentWillUpdate(){
-        console.log('ON WILL UPDATE', this.props.dashboard);
+
     }
 
     handleMenu(data){
-        console.log('KEY: ', data);
-        this.props.initDashboard(`Click on item ${data.item.props.children}`);
+
     }
 
     userMenu(){
@@ -69,4 +68,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { initDashboard })(Navigation);
+export default connect(mapStateToProps, { })(Navigation);
