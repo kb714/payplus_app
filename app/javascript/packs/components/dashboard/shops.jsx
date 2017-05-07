@@ -60,6 +60,7 @@ class Shops extends Component {
                                     <div className="shop-action">
                                         <h3>Nombre del comercio</h3>
                                         <span>Descripción del comercio</span>
+                                        <Button icon="ellipsis" style={{width: '100%'}}>Detalles</Button>
                                     </div>
                                     </Card>
                             </Col>
