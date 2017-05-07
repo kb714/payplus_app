@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import dashboardStore from '../stores/dashboardStore';
 //ui
 import {Col, Row} from "antd";
+import Overview from "../components/dashboard/overview";
 
 const store = dashboardStore();
 
@@ -17,7 +18,8 @@ class DashboardView extends Component {
                     <Navigation />
                     <Row type="flex" justify="center">
                         <Col xs={{span: 24}} md={{span: 16}}>
-                            <Shops/>
+                            <Shops />
+                            <Overview />
                         </Col>
                     </Row>
                 </div>

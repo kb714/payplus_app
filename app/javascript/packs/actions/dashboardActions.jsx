@@ -1,7 +1,7 @@
 import { getShops } from '../lib/api';
 import {
     FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS, OPEN_SHOP_FORM,
-    CLOSE_SHOP_FORM } from '../constants/actions';
+    CLOSE_SHOP_FORM } from '../constants/dashboardActions';
 
 export function fetchShops(){
     return dispatch => {

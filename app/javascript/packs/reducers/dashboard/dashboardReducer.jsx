@@ -1,5 +1,5 @@
 import { FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS,
-    OPEN_SHOP_FORM, CLOSE_SHOP_FORM } from '../../constants/actions';
+    OPEN_SHOP_FORM, CLOSE_SHOP_FORM } from '../../constants/dashboardActions';
 
 const current_user = document.querySelector('body');
 

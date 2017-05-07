@@ -47,17 +47,20 @@ class Shops extends Component {
             );
         } else {
             return (
-                <Row>
+                <Row gutter={15}>
                     {this.props.dashboard.shops.items.map((item, i) => {
                         return(
                             <Col span="8" key={i}>
-                                <Card title={item.name} span="8" bodyStyle={{padding: 0}}>
+                                <Card span="8" bodyStyle={{padding: 0}}>
                                     <div className="shop-image">
                                         <img
-                                            src="https://placeholdit.imgix.net/~text?txtsize=19&txt=200×200&w=200&h=200"
+                                            src="http://placehold.it/150x150"
                                             alt="Shop Image"/>
                                     </div>
-                                    {item.name}
+                                    <div className="shop-action">
+                                        <h3>Nombre del comercio</h3>
+                                        <span>Descripción del comercio</span>
+                                    </div>
                                     </Card>
                             </Col>
                         );

@@ -1,39 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/sessions/loginActions';
+import { fetchLogin } from '../../actions/sessions/loginActions';
 import { Form, Icon, Input, Button, message, Spin } from 'antd';
 const FormItem = Form.Item;
 
 class DeviseLoginForm extends Component {
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {
-            loading: false
-        }
     }
 
     handleSubmit(e){
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.setState({loading: true});
-                this.props.login(values).then(
-                    (res) => {
-                        message.success('Inicio correcto, espere un momento', 3);
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000)
-                    },
-                    (err) => {
-                        message.warning('Nombre de usuario o contraseña inválidos', 3);
-                        this.setState({loading: false});
-                    }
-                );
+                this.props.fetchLogin(values);
             }
         });
     };
+
+    componentWillReceiveProps(nextProps) {
+        const { error, success } = nextProps.login;
+        if(error) {
+            message.warning('Nombre de usuario o contraseña inválidos', 3);
+        }
+
+        if(success) {
+            message.success('Inicio correcto, espere un momento', 3);
+            setTimeout(() => {
+                location.reload();
+            }, 1000)
+        }
+    }
 
     render() {
         const messages = {
@@ -42,7 +41,7 @@ class DeviseLoginForm extends Component {
         };
         const { getFieldDecorator } = this.props.form;
         return (
-            <Spin spinning={this.state.loading} wrapperClassName="spin-wrapper-payplus" tip="Iniciando sesión">
+            <Spin spinning={this.props.login.loading} wrapperClassName="spin-wrapper-payplus" tip="Iniciando sesión">
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <FormItem>
                         {getFieldDecorator('email', {
@@ -56,7 +55,7 @@ class DeviseLoginForm extends Component {
                     </FormItem>
                     <FormItem>
                         <div className="text-center">
-                            <Button type="danger" htmlType="submit" className="login-form-button" loading={this.state.loading}>
+                            <Button type="danger" htmlType="submit" className="login-form-button" loading={this.props.login.loading}>
                                 Iniciar sesión
                             </Button>
                         </div>
@@ -70,10 +69,12 @@ class DeviseLoginForm extends Component {
     };
 }
 
-// DeviseLoginForm.propTypes = {
-//     login: React.PropTypes.func.isRequired
-// };
-
 const LoginForm = Form.create()(DeviseLoginForm);
 
-export default connect(null, { login })(LoginForm);
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps, { fetchLogin })(LoginForm);
