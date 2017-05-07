@@ -12,14 +12,6 @@ class Navigation extends Component {
         this.userMenu = this.userMenu.bind(this);
     }
 
-    componentWillMount(){
-
-    }
-
-    componentWillUpdate(){
-
-    }
-
     handleMenu(data){
 
     }
@@ -41,22 +33,18 @@ class Navigation extends Component {
 
     render() {
         return(
-            <div>
-                <Spin spinning={false}>
-                    <div className="top-navigation">
-                        <Row type="flex" justify="space-between">
-                            <Col span={9}/>
-                            <Col span={6} className="app-name">PayPlus</Col>
-                            <Col span={9} className="app-navigation-dropdown text-right">
-                                <Dropdown overlay={this.userMenu()}>
-                                    <Button style={{ marginLeft: 8 }} icon="user">
-                                        {this.props.dashboard.email} <Icon type="down" />
-                                    </Button>
-                                </Dropdown>
-                            </Col>
-                        </Row>
-                    </div>
-                </Spin>
+            <div className="top-navigation">
+                <Row type="flex" justify="space-between">
+                    <Col span={9}/>
+                    <Col span={6} className="app-name">PayPlus</Col>
+                    <Col span={9} className="app-navigation-dropdown text-right">
+                        <Dropdown overlay={this.userMenu()}>
+                            <Button style={{ marginLeft: 8 }} icon="user">
+                                {this.props.dashboard.email} <Icon type="down" />
+                            </Button>
+                        </Dropdown>
+                    </Col>
+                </Row>
             </div>
         );
     }

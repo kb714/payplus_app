@@ -1,4 +1,4 @@
-@import 'colors';
+@import 'imports/colors';
 
 body{
   background: #F5F5F5;
@@ -21,6 +21,7 @@ body{
   }
 }
 
-@import 'helpers';
-@import 'design_overrides';
-@import 'navigation';
+@import 'imports/helpers';
+@import 'imports/design_overrides';
+@import 'imports/navigation';
+@import 'imports/dashboard';

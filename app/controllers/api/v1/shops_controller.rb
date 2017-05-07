@@ -5,7 +5,6 @@ module Api
 
     respond_to :json
     def index
-      sleep 3
       #data = current_user.shops.all
       data = [
           {

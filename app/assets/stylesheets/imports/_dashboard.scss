@@ -1,0 +1,22 @@
+.dashboard-shops-container{
+  margin-top: 15px;
+  background-color: transparent;
+  .new-shop-container{
+    padding-bottom: 15px;
+
+  }
+  .ant-card{
+    .ant-card-head{
+      text-align: center;
+    }
+    .ant-card-body{
+      .shop-image{
+        padding: 15px 0;
+        text-align: center;
+        img{
+
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { getShops } from '../lib/api';
-import { FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS } from '../constants/actions';
+import {
+    FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS, OPEN_SHOP_FORM,
+    CLOSE_SHOP_FORM } from '../constants/actions';
 
 export function fetchShops(){
     return dispatch => {
@@ -12,4 +14,16 @@ export function fetchShops(){
                 dispatch({type: ERROR_RECEIVE_SHOPS, payload: err.response.data});
             });
     };
+}
+
+export function openShopCreateForm() {
+    return dispatch => {
+        dispatch({type: OPEN_SHOP_FORM});
+    }
+}
+
+export function closeShopCreateForm() {
+    return dispatch => {
+        dispatch({type: CLOSE_SHOP_FORM});
+    }
 }

@@ -4,6 +4,8 @@ import Navigation from '../components/dashboard/navigation';
 import Shops from "../components/dashboard/shops";
 import { Provider } from 'react-redux';
 import dashboardStore from '../stores/dashboardStore';
+//ui
+import {Col, Row} from "antd";
 
 const store = dashboardStore();
 
@@ -13,7 +15,11 @@ class DashboardView extends Component {
             <Provider store={store}>
                 <div>
                     <Navigation />
-                    <Shops/>
+                    <Row type="flex" justify="center">
+                        <Col xs={{span: 24}} md={{span: 16}}>
+                            <Shops/>
+                        </Col>
+                    </Row>
                 </div>
             </Provider>
         );
