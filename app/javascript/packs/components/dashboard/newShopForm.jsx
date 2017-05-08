@@ -10,6 +10,7 @@ class ShopForm extends Component {
         super();
         this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleResetError = this.handleResetError.bind(this);
     }
 
     handleClose(){
@@ -27,28 +28,31 @@ class ShopForm extends Component {
         });
     }
 
+    handleResetError(newFieldValue) {
+        const { form } = this.props;
+        form.setFields(newFieldValue);
+    }
+
     componentWillReceiveProps(nextProps) {
         const { created, error, message } = nextProps.dashboard.shop;
         const { form } = this.props;
 
         if( error ) {
-            this.props.form.setFields({
-                name: {
-                    value: form.getFieldValue('name'),
-                    errors: message.name
-                },
-                description: {
-                    value: form.getFieldValue('description'),
-                    errors: message.description
-                }
-            });
+            let errors = {};
+
+            for (let i in message) {
+                errors = {...errors, [i]: {value: form.getFieldValue(i), errors: message[i]}}
+            }
+
+            this.props.form.setFields({...errors});
+
             this.props.resetCreateShop();
         }
 
         if( created ) {
             this.props.resetCreateShop();
-            this.props.fetchShops();
             this.handleClose();
+            this.props.fetchShops();
         }
     }
 
@@ -70,8 +74,10 @@ class ShopForm extends Component {
 
         return(
             <Modal visible={dashboard.shop.create}
+                   confirmLoading={dashboard.shop.loading}
                    onCancel={this.handleClose}
                    onOk={this.handleSubmit}
+                   title="Nuevo comercio"
                    wrapClassName="vertical-center-modal"
                    okText="Crear"
                    cancelText="Cancelar">
@@ -98,6 +104,11 @@ function mapStateProps(state) {
     }
 }
 
-const NewShopForm = Form.create()(ShopForm);
+const NewShopForm = Form.create({
+    onValuesChange(props, values) {
+        const name = Object.keys(values);
+        //ShopForm.handleResetError({[name]: {value: values[name]}});
+    }
+})(ShopForm);
 
 export default connect(mapStateProps, { closeShopCreateForm, fetchCreateShop, resetCreateShop, fetchShops })(NewShopForm);

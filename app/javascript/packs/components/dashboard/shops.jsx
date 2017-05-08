@@ -59,7 +59,7 @@ class Shops extends React.Component {
                                     </div>
                                     <div className="shop-action">
                                         <h3>{item.name}</h3>
-                                        <span>{item.description}</span>
+                                        <span>{item.description} {item.slug}</span>
                                         <hr/>
                                         <Button ghost={true} type="danger">Detalles</Button>
                                     </div>

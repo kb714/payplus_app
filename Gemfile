@@ -55,8 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # mongodb
 gem 'mongoid'
-gem 'mongoid_search', github: 'mongoid/mongoid_search', branch: 'master'
 gem 'mongoid-slug'
+gem 'mongoid_search', github: 'mongoid/mongoid_search', branch: 'master'
 
 # auth
 gem 'cancancan'
