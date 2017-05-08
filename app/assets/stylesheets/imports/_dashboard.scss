@@ -8,6 +8,7 @@
 
   }
   .ant-card{
+    margin-bottom: 15px;
     .ant-card-head{
       text-align: center;
     }
@@ -20,16 +21,17 @@
         }
       }
       .shop-action{
+        text-align: center;
         background: #FAFAFA;
-        border-bottom: 5px solid $red-color;
-        padding: 15px;
+        border-top: 2px solid $red-color;
+        color: #757575;
+        padding: 15px 0;
       }
     }
   }
 }
 
 .dashboard-overview-content{
-  margin-top: 15px;
   &:hover{
     box-shadow: none;
     border: 1px solid #e9e9e9;

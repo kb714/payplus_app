@@ -5,7 +5,7 @@ class Shop
   mount_uploader :image, ShopImageUploader
 
   ## relation's
-  has_one :user
+  belongs_to :user
 
   ## field's
   field :name
@@ -16,5 +16,7 @@ class Shop
   field :image
   ##validation's
 
+  validates :name, presence: true
+  validates :description, presence: true
 
 end

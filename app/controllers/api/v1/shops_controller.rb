@@ -5,18 +5,23 @@ module Api
 
     respond_to :json
     def index
-      #data = current_user.shops.all
-      data = [
-          {
-             id: 1,
-             name: 'Test'
-          },
-          {
-             id: 2,
-             name: 'Test 2'
-          },
-      ]
+      data = current_user.shops.all
       render json: data
+    end
+
+    def create
+      data = current_user.shops.new(shop_params)
+      if data.save
+        render json: data, status: :ok
+      else
+        render json: data.errors, status: :bad_request
+      end
+    end
+
+    private
+
+    def shop_params
+      params.permit(:name, :description)
     end
   end
 end

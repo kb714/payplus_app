@@ -5,9 +5,9 @@ import { fetchShops, openShopCreateForm } from '../../actions/dashboardActions';
 import { Spin, Card, Col, Row, Button } from 'antd';
 import NewShopForm from './newShopForm';
 
-class Shops extends Component {
+class Shops extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.createShop = this.createShop.bind(this);
     }
@@ -16,7 +16,7 @@ class Shops extends Component {
         this.props.fetchShops();
     }
 
-    createShop(){
+    createShop() {
         this.props.openShopCreateForm();
     }
 
@@ -28,7 +28,7 @@ class Shops extends Component {
                       spinning={dashboard.shops.loading}
                       wrapperClassName="spin-wrapper-payplus">
                     <div className="new-shop-container">
-                        <Button type="danger" icon="plus" onClick={this.createShop}>Nuevo comercio</Button>
+                        <Button size="large" type="primary" icon="plus" onClick={this.createShop}>Nuevo comercio</Button>
                         <NewShopForm/>
                     </div>
                     {this.shop()}
@@ -41,8 +41,8 @@ class Shops extends Component {
         const { dashboard } = this.props;
         if(!Array.isArray(dashboard.shops.items) || !dashboard.shops.items.length){
             return(
-                <div className="text-center">
-                    Sin elementos para mostrar
+                <div className="text-center" style={{padding: '50px 0'}}>
+                    <h3>No tiene ningún comercio creado</h3>
                 </div>
             );
         } else {
@@ -58,9 +58,10 @@ class Shops extends Component {
                                             alt="Shop Image"/>
                                     </div>
                                     <div className="shop-action">
-                                        <h3>Nombre del comercio</h3>
-                                        <span>Descripción del comercio</span>
-                                        <Button icon="ellipsis" style={{width: '100%'}}>Detalles</Button>
+                                        <h3>{item.name}</h3>
+                                        <span>{item.description}</span>
+                                        <hr/>
+                                        <Button ghost={true} type="danger">Detalles</Button>
                                     </div>
                                     </Card>
                             </Col>
@@ -68,7 +69,6 @@ class Shops extends Component {
                     })}
                 </Row>
             );
-
         }
     }
 }

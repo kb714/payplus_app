@@ -1,7 +1,8 @@
-import { getShops } from '../lib/api';
+import { getShops, postShop } from '../lib/api';
 import {
     FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS, OPEN_SHOP_FORM,
-    CLOSE_SHOP_FORM } from '../constants/dashboardActions';
+    CLOSE_SHOP_FORM, FETCH_CREATE_SHOP, SUCCESS_CREATE_SHOP,
+    ERROR_CREATE_SHOP, RESET_CREATE_SHOP } from '../constants/dashboardActions';
 
 export function fetchShops(){
     return dispatch => {
@@ -25,5 +26,24 @@ export function openShopCreateForm() {
 export function closeShopCreateForm() {
     return dispatch => {
         dispatch({type: CLOSE_SHOP_FORM});
+    }
+}
+
+export function fetchCreateShop(data) {
+    return dispatch => {
+        dispatch({ type: FETCH_CREATE_SHOP});
+        postShop(data)
+            .then((res) => {
+                dispatch({ type: SUCCESS_CREATE_SHOP, payload: res.data});
+            })
+            .catch((err) => {
+                dispatch({ type: ERROR_CREATE_SHOP, payload: err.response.data });
+            });
+    }
+}
+
+export function resetCreateShop(){
+    return dispatch => {
+        dispatch({ type: RESET_CREATE_SHOP});
     }
 }

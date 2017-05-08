@@ -60,7 +60,6 @@ $input-color: $red-color;
 }
 
 // ant spinner
-
 .spin-wrapper-payplus{
   .ant-spin-blur{
     opacity: 0!important;
@@ -72,5 +71,20 @@ $input-color: $red-color;
   }
   .ant-spin-text{
     color: #757575!important;
+  }
+}
+
+//button
+.ant-btn-primary{
+  color: $white-color;
+  background: $red-color;
+  border-color: $red-color;
+  &:hover{
+    background: lighten($red-color, 10);
+    border-color: lighten($red-color, 10);
+  }
+  &:active, &:visited, &:focus{
+    background: darken($red-color, 10);
+    border-color: darken($red-color, 10);
   }
 }
