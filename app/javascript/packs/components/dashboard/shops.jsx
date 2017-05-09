@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchShops, openShopCreateForm } from '../../actions/dashboardActions';
+import { fetchShops, openShopCreateForm, destroyShop } from '../../actions/dashboardActions';
 //ui
-import { Spin, Card, Col, Row, Button } from 'antd';
+import { Spin, Card, Col, Row, Button, Modal } from 'antd';
 import NewShopForm from './newShopForm';
 
 class Shops extends React.Component {
 
     constructor() {
         super();
-        this.createShop = this.createShop.bind(this);
+        this.handleNewShopForm = this.handleNewShopForm.bind(this);
+        this.handleDestroyShop = this.handleDestroyShop.bind(this);
     }
 
     componentWillMount(){
         this.props.fetchShops();
     }
 
-    createShop() {
+    handleNewShopForm() {
         this.props.openShopCreateForm();
     }
+
+    handleDestroyShop(slug) {
+        const confirm = Modal.confirm;
+        const { destroyShop } = this.props;
+        confirm({
+            okText: 'Eliminar',
+            cancelText: 'Cancelar',
+            title: '¿Está seguro que desea eliminar este comercio?',
+            onOk() {
+                destroyShop(slug);
+            },
+            onCancel() {},
+        });
+    }
+
 
     render() {
         const { dashboard } = this.props;
@@ -28,7 +44,10 @@ class Shops extends React.Component {
                       spinning={dashboard.shops.loading}
                       wrapperClassName="spin-wrapper-payplus">
                     <div className="new-shop-container">
-                        <Button size="large" type="primary" icon="plus" onClick={this.createShop}>Nuevo comercio</Button>
+                        <Button size="large" type="primary" icon="plus" onClick={this.handleNewShopForm}>
+                            Nuevo comercio
+                        </Button>
+
                         <NewShopForm/>
                     </div>
                     {this.shop()}
@@ -49,9 +68,14 @@ class Shops extends React.Component {
             return (
                 <Row gutter={15}>
                     {this.props.dashboard.shops.items.map((item, i) => {
+                        const destroy = <Button type="danger"
+                                                shape="circle"
+                                                icon="delete"
+                                                key={item.id}
+                                                onClick={this.handleDestroyShop.bind(this, item.slug)} />;
                         return(
                             <Col span="8" key={i}>
-                                <Card span="8" bodyStyle={{padding: 0}}>
+                                <Card span="8" extra={destroy}>
                                     <div className="shop-image">
                                         <img
                                             src="http://placehold.it/150x150"
@@ -59,11 +83,11 @@ class Shops extends React.Component {
                                     </div>
                                     <div className="shop-action">
                                         <h3>{item.name}</h3>
-                                        <span>{item.description} {item.slug}</span>
+                                        <span>{item.description}</span>
                                         <hr/>
                                         <Button ghost={true} type="danger">Detalles</Button>
                                     </div>
-                                    </Card>
+                                </Card>
                             </Col>
                         );
                     })}
@@ -79,4 +103,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchShops, openShopCreateForm })(Shops);
+export default connect(mapStateToProps, { fetchShops, openShopCreateForm, destroyShop })(Shops);

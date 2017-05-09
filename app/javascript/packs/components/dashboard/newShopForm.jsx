@@ -62,12 +62,12 @@ class ShopForm extends Component {
         const rules = {
             name: {
                 rules: [
-                    //{required: true, message: 'Debe ingresar un nombre'}
+                    {required: true, message: 'Debe ingresar un nombre'}
                 ]
             },
             description: {
                 rules: [
-                    //{required: true, message: 'Debe ingresar una descripción'}
+                    {required: true, message: 'Debe ingresar una descripción'}
                 ]
             }
         };

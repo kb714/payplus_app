@@ -27,3 +27,13 @@ export function postShop(data) {
         authenticity_token: TOKEN
     });
 }
+
+export function deleteShop(id) {
+    return axios({
+        method: 'DELETE',
+        url: `${API_URL}/shops/${id}`,
+        data: {
+            authenticity_token: TOKEN
+        }
+    });
+}

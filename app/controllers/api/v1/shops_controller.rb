@@ -18,6 +18,15 @@ module Api
       end
     end
 
+    def destroy
+      data = current_user.shops.find_by(slugs: params[:id])
+      if data.destroy
+        render json: data, status: :ok
+      else
+        render json: data, status: :bad_request
+      end
+    end
+
     private
 
     def shop_params

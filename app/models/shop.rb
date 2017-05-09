@@ -19,10 +19,12 @@ class Shop
 
   slug :name, history: true
 
-  ##validation's
+  ## validation's
 
   validates :name, presence: true
   validates_uniqueness_of :name, case_sensitive: false, scope: :user_id
   validates :description, presence: true
+
+  ## method's
 
 end

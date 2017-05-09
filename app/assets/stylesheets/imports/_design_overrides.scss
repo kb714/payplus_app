@@ -14,7 +14,7 @@ $checkbox-color: $red-color;
 }
 
 /* Input */
-$input-color: $red-color;
+$input-color: #D32F2F;
 .ant-select-auto-complete.ant-select .ant-input:hover {
   border-color: $red-color;
 }
@@ -75,16 +75,40 @@ $input-color: $red-color;
 }
 
 //button
+$red-color: #D32F2F;
 .ant-btn-primary{
   color: $white-color;
   background: $red-color;
   border-color: $red-color;
   &:hover{
+    color: $white-color !important;
     background: lighten($red-color, 10);
-    border-color: lighten($red-color, 10);
+    border-color: lighten($red-color, 10) !important;
   }
   &:active, &:visited, &:focus{
+    color: $white-color !important;
     background: darken($red-color, 10);
+    border-color: darken($red-color, 10);
+  }
+}
+.ant-btn-danger{
+  color: $red-color;
+  &:focus, &:hover {
+    color: $white-color !important;
+    background-color: $red-color;
+    border-color: $red-color !important;
+  }
+  &.ant-btn-background-ghost.ant-btn-danger{
+    &:focus, &:hover {
+      color: $red-color !important;
+      background-color: $red-color;
+      border-color: $red-color;
+    }
+  }
+}
+.ant-btn{
+  &:focus, &:hover {
+    color: darken($red-color, 10);
     border-color: darken($red-color, 10);
   }
 }

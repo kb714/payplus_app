@@ -13,6 +13,7 @@
       text-align: center;
     }
     .ant-card-body{
+      padding: 0;
       .shop-image{
         padding: 15px 0;
         text-align: center;
@@ -23,7 +24,7 @@
       .shop-action{
         text-align: center;
         background: #FAFAFA;
-        border-top: 2px solid $red-color;
+        //border-top: 2px solid $red-color;
         color: #757575;
         padding: 15px 0;
       }
@@ -32,6 +33,7 @@
 }
 
 .dashboard-overview-content{
+  margin-bottom: 30px;
   &:hover{
     box-shadow: none;
     border: 1px solid #e9e9e9;

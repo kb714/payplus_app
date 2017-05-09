@@ -1,6 +1,4 @@
-import { FETCH_SHOPS, RECEIVE_SHOPS, ERROR_RECEIVE_SHOPS,
-    OPEN_SHOP_FORM, CLOSE_SHOP_FORM, FETCH_CREATE_SHOP,
-    SUCCESS_CREATE_SHOP, ERROR_CREATE_SHOP, RESET_CREATE_SHOP } from '../../constants/dashboardActions';
+import * as ACTIONS from '../../constants/dashboardActions';
 
 const current_user = document.querySelector('body');
 
@@ -25,7 +23,7 @@ const INITIAL_STATE = {
 
 export default function (state = INITIAL_STATE, action){
     switch(action.type) {
-        case FETCH_SHOPS:
+        case ACTIONS.FETCH_SHOPS:
             return { ...state,
                 shops: {
                     ...state.shops,
@@ -33,7 +31,7 @@ export default function (state = INITIAL_STATE, action){
                     error: false
                 }
             };
-        case RECEIVE_SHOPS:
+        case ACTIONS.RECEIVE_SHOPS:
             return { ...state,
                 shops: {
                     ...state.shops,
@@ -41,7 +39,7 @@ export default function (state = INITIAL_STATE, action){
                     items: action.payload
                 }
             };
-        case ERROR_RECEIVE_SHOPS:
+        case ACTIONS.ERROR_RECEIVE_SHOPS:
             return { ...state,
                 shops: {
                     loading: false,
@@ -49,28 +47,37 @@ export default function (state = INITIAL_STATE, action){
                     message: action.payload
                 }
             };
-        case OPEN_SHOP_FORM:
+        case ACTIONS.OPEN_SHOP_FORM:
             return { ...state,
                 shop: {
                     ...state.shop,
                     create: true
                 }
             };
-        case CLOSE_SHOP_FORM:
+        case ACTIONS.CLOSE_SHOP_FORM:
             return { ...state,
                 shop: {
                     ...state.shop,
                     create: false
                 }
             };
-        case FETCH_CREATE_SHOP:
+        case ACTIONS.FETCH_CREATE_SHOP:
             return { ...state, shop: { ...state.shop, loading: true, error: false, message: null } };
-        case SUCCESS_CREATE_SHOP:
+        case ACTIONS.SUCCESS_CREATE_SHOP:
             return { ...state, shop: { ...state.shop, created: true, loading: false, error: false, message: null} };
-        case ERROR_CREATE_SHOP:
+        case ACTIONS.ERROR_CREATE_SHOP:
             return { ...state, shop: { ...state.shop, loading: false, error: true, message: action.payload } };
-        case RESET_CREATE_SHOP:
+        case ACTIONS.RESET_CREATE_SHOP:
             return { ...state, shop: { ...state.shop, created: false, loading: false, error: false, message: null } };
+        case ACTIONS.DESTROY_SHOP:
+            const items = state.shops.items.filter((item) => item.slug !== action.payload);
+            return { ...state,
+                shops: {
+                    ...state.shops,
+                    loading: false,
+                    items: items
+                }
+            };
         default:
             return state;
     }
