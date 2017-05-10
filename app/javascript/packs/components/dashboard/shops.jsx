@@ -11,6 +11,7 @@ class Shops extends React.Component {
         super();
         this.handleNewShopForm = this.handleNewShopForm.bind(this);
         this.handleDestroyShop = this.handleDestroyShop.bind(this);
+        this.handleShopDetail = this.handleShopDetail.bind(this);
     }
 
     componentWillMount(){
@@ -33,6 +34,11 @@ class Shops extends React.Component {
             },
             onCancel() {},
         });
+    }
+
+    handleShopDetail(slug) {
+        console.log(slug);
+        document.location.href = `/${slug}`;
     }
 
 
@@ -58,6 +64,12 @@ class Shops extends React.Component {
 
     shop() {
         const { dashboard } = this.props;
+        const scol = {
+            xs: {span: 24},
+            sm: {span: 12},
+            md: {span: 8}
+        };
+
         if(!Array.isArray(dashboard.shops.items) || !dashboard.shops.items.length){
             return(
                 <div className="text-center" style={{padding: '50px 0'}}>
@@ -74,7 +86,7 @@ class Shops extends React.Component {
                                                 key={item.id}
                                                 onClick={this.handleDestroyShop.bind(this, item.slug)} />;
                         return(
-                            <Col span="8" key={i}>
+                            <Col xs={scol.xs} sm={scol.sm}  md={scol.md} key={i}>
                                 <Card span="8" extra={destroy}>
                                     <div className="shop-image">
                                         <img
@@ -85,7 +97,9 @@ class Shops extends React.Component {
                                         <h3>{item.name}</h3>
                                         <span>{item.description}</span>
                                         <hr/>
-                                        <Button ghost={true} type="danger">Detalles</Button>
+                                        <Button onClick={this.handleShopDetail.bind(this, item.slug)}
+                                                ghost={true}
+                                                type="danger">Detalles</Button>
                                     </div>
                                 </Card>
                             </Col>

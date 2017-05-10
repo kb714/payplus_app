@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginForm from "../../components/sessions/loginForm";
 import logo from '../../logo.png';
@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 const store = loginStore();
 
-class LoginView extends Component {
+class LoginView extends React.Component {
     render() {
         return(
             <Provider store={store}>

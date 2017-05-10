@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchLogin } from '../../actions/sessions/loginActions';
 import { Form, Icon, Input, Button, message, Spin } from 'antd';
 const FormItem = Form.Item;
 
-class DeviseLoginForm extends Component {
+class DeviseLoginForm extends React.Component {
 
     constructor(){
         super();
@@ -67,6 +68,12 @@ class DeviseLoginForm extends Component {
             </Spin>
         );
     };
+}
+
+DeviseLoginForm.propTypes = {
+    fetchLogin: PropTypes.func.isRequired,
+    form: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired
 }
 
 const LoginForm = Form.create()(DeviseLoginForm);

@@ -14,8 +14,10 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
-      resources :shops, controller: "api/v1/shops"
+      resources :shops, controller: 'api/v1/shops'
     end
   end
+
+  resources :shops, only: %w[show update], path: '/'
 
 end

@@ -13,6 +13,12 @@
   float: left;
 }
 
+.hidden-xs{
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 hr {
   display: block;
   height: 1px;

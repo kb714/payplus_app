@@ -17,7 +17,7 @@ class DashboardView extends Component {
                 <div>
                     <Navigation />
                     <Row type="flex" justify="center">
-                        <Col xs={{span: 24}} md={{span: 16}}>
+                        <Col xs={{span: 22}} md={{span: 22}} lg={{span: 20}} xl={{span: 16}}>
                             <Shops />
                             <Overview />
                         </Col>
@@ -28,7 +28,7 @@ class DashboardView extends Component {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     ReactDOM.render(
         <DashboardView />,
         document.body.appendChild(document.createElement('div')),

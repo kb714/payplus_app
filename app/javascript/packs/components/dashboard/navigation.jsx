@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Spin, Menu, Dropdown, Button, Icon, message } from 'antd';
 import { initDashboard } from '../../actions/dashboardActions';
-
+//UI
+import { Row, Col, Spin, Menu, Dropdown, Button, Icon, message } from 'antd';
 class Navigation extends Component {
 
     constructor(){
@@ -40,7 +40,8 @@ class Navigation extends Component {
                     <Col span={9} className="app-navigation-dropdown text-right">
                         <Dropdown overlay={this.userMenu()}>
                             <Button style={{ marginLeft: 8 }} icon="user">
-                                {this.props.dashboard.email} <Icon type="down" />
+                                <span className="hidden-xs">{this.props.dashboard.email}</span>
+                                <Icon type="down" />
                             </Button>
                         </Dropdown>
                     </Col>
