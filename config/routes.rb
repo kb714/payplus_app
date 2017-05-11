@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope :api do
-    scope :v1 do
+    scope :v1, defaults: { format: :json } do
       resources :shops, controller: 'api/v1/shops'
     end
   end
