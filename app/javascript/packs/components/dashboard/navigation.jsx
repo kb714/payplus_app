@@ -13,16 +13,20 @@ class Navigation extends Component {
     }
 
     handleMenu(data){
-
+        console.log(data);
+        if (data.key == "1") {
+            window.location.replace('/');
+        }
     }
 
     userMenu(){
         return(
             <Menu onClick={this.handleMenu}>
-                <Menu.Item key="1">Perfil</Menu.Item>
-                <Menu.Item key="2">Seguridad</Menu.Item>
+                <Menu.Item key="1">Mis Comercios</Menu.Item>
+                <Menu.Item key="2">Perfil</Menu.Item>
+                <Menu.Item key="3">Seguridad</Menu.Item>
                 <Menu.Divider />
-                <Menu.Item key="3">
+                <Menu.Item key="4">
                     <a className="nav-ant-dropdown-link" data-method="delete" href={this.props.dashboard.logout_url}>
                         Cerrar Sesión
                     </a>
