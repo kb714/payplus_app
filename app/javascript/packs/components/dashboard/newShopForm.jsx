@@ -59,6 +59,7 @@ class ShopForm extends Component {
     render(){
         const { dashboard } = this.props;
         const { getFieldDecorator } = this.props.form;
+
         const rules = {
             name: {
                 rules: [
@@ -104,11 +105,6 @@ function mapStateProps(state) {
     }
 }
 
-const NewShopForm = Form.create({
-    onValuesChange(props, values) {
-        const name = Object.keys(values);
-        //ShopForm.handleResetError({[name]: {value: values[name]}});
-    }
-})(ShopForm);
+const NewShopForm = Form.create()(ShopForm);
 
 export default connect(mapStateProps, { closeShopCreateForm, fetchCreateShop, resetCreateShop, fetchShops })(NewShopForm);

@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchLogin } from '../../actions/sessions/loginActions';
+//UI
 import { Form, Icon, Input, Button, message, Spin } from 'antd';
+
 const FormItem = Form.Item;
 
 class DeviseLoginForm extends React.Component {
@@ -42,30 +44,28 @@ class DeviseLoginForm extends React.Component {
         };
         const { getFieldDecorator } = this.props.form;
         return (
-            <Spin spinning={this.props.login.loading} wrapperClassName="spin-wrapper-payplus" tip="Iniciando sesión">
-                <Form onSubmit={this.handleSubmit} className="login-form">
-                    <FormItem>
-                        {getFieldDecorator('email', {
-                            rules: [{ required: true, message: messages.email }],
-                        })(<Input prefix={<Icon type="mail" style={{ fontSize: 13 }} />} placeholder="Email" />)}
-                    </FormItem>
-                    <FormItem>
-                        {getFieldDecorator('password', {
-                            rules: [{ required: true, message: messages.password }],
-                        })(<Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Contraseña" />)}
-                    </FormItem>
-                    <FormItem>
-                        <div className="text-center">
-                            <Button type="danger" htmlType="submit" className="login-form-button" loading={this.props.login.loading}>
-                                Iniciar sesión
-                            </Button>
-                        </div>
-                        <hr/>
-                        <a href="#">Olvidé mi contraseña</a>
-                        <a className="pull-right" href="#">Crear nueva cuenta</a>
-                    </FormItem>
-                </Form>
-            </Spin>
+            <Form onSubmit={this.handleSubmit} className="login-form">
+                <FormItem>
+                    {getFieldDecorator('email', {
+                        rules: [{ required: true, message: messages.email }],
+                    })(<Input prefix={<Icon type="mail" style={{ fontSize: 13 }} />} placeholder="Email" />)}
+                </FormItem>
+                <FormItem>
+                    {getFieldDecorator('password', {
+                        rules: [{ required: true, message: messages.password }],
+                    })(<Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Contraseña" />)}
+                </FormItem>
+                <FormItem>
+                    <div className="text-center">
+                        <Button type="danger" htmlType="submit" className="login-form-button" loading={this.props.login.loading}>
+                            Iniciar sesión
+                        </Button>
+                    </div>
+                    <hr/>
+                    <a href="#">Olvidé mi contraseña</a>
+                    <a className="pull-right" href="#">Crear nueva cuenta</a>
+                </FormItem>
+            </Form>
         );
     };
 }
