@@ -1,29 +1,24 @@
-import React, { Component } from 'react';
+// Dependencies
+import React from 'react';
 import ReactDOM from 'react-dom';
-import Navigation from '../components/dashboard/navigation';
-import Shops from "../components/dashboard/shops";
-import { Provider } from 'react-redux';
-import dashboardStore from '../stores/dashboardStore';
-//ui
+// ui
 import {Col, Row} from "antd";
+import Application from "./layouts/application";
+// Todo
+import Shops from "../components/dashboard/shops";
 import Overview from "../components/dashboard/overview";
 
-const store = dashboardStore();
-
-class DashboardView extends Component {
+class DashboardView extends React.Component {
     render() {
         return(
-            <Provider store={store}>
-                <div>
-                    <Navigation />
-                    <Row type="flex" justify="center">
-                        <Col xs={{span: 22}} md={{span: 22}} lg={{span: 20}} xl={{span: 16}}>
-                            <Shops />
-                            <Overview />
-                        </Col>
-                    </Row>
-                </div>
-            </Provider>
+            <Application>
+                <Row type="flex" justify="center">
+                    <Col xs={{span: 22}} md={{span: 22}} lg={{span: 20}} xl={{span: 16}}>
+                        <Shops />
+                        <Overview />
+                    </Col>
+                </Row>
+            </Application>
         );
     }
 }

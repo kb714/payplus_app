@@ -8,6 +8,11 @@ class ShopForm extends Component {
 
     constructor(){
         super();
+
+        this.state = {
+            image: []
+        };
+
         this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleResetError = this.handleResetError.bind(this);
@@ -22,8 +27,8 @@ class ShopForm extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log(values);
-                this.props.fetchCreateShop(values);
+                console.log(this.state.image);
+                this.props.fetchCreateShop(values, this.state.image);
             }
         });
     }
@@ -56,6 +61,12 @@ class ShopForm extends Component {
         }
     }
 
+    _onChangeImage(image){
+        this.setState({
+            image: image.target.files[0]
+        });
+    }
+
     render(){
         const { dashboard } = this.props;
         const { getFieldDecorator } = this.props.form;
@@ -69,6 +80,11 @@ class ShopForm extends Component {
             description: {
                 rules: [
                     {required: true, message: 'Debe ingresar una descripción'}
+                ]
+            },
+            image: {
+                rules: [
+
                 ]
             }
         };
@@ -91,6 +107,19 @@ class ShopForm extends Component {
                     <Form.Item label="Descripción">
                         { getFieldDecorator('description', {...rules.description})(
                             <Input type="textarea"/>
+                        ) }
+                    </Form.Item>
+                    <Form.Item label="Imagen">
+                        { getFieldDecorator('image', {...rules.image})(
+                            <Input
+                                type="file"
+                                onChange={
+                                    ( e ) => {
+                                        e.preventDefault();
+                                        this._onChangeImage(e);
+                                    }
+                                }
+                            />
                         ) }
                     </Form.Item>
                 </Form>

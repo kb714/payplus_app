@@ -26,14 +26,16 @@ export function closeShopCreateForm() {
     }
 }
 
-export function fetchCreateShop(data) {
+export function fetchCreateShop(data, image) {
     return dispatch => {
         dispatch({ type: ACTIONS.FETCH_CREATE_SHOP});
-        postShop(data)
+        console.log('EN EL FETCH', image);
+        postShop(data, image)
             .then((res) => {
                 dispatch({ type: ACTIONS.SUCCESS_CREATE_SHOP, payload: res.data});
             })
             .catch((err) => {
+                console.log(err);
                 dispatch({ type: ACTIONS.ERROR_CREATE_SHOP, payload: err.response.data });
             });
     }
