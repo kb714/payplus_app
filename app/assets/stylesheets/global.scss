@@ -21,6 +21,12 @@ body{
   }
 }
 
+.turbolinks-progress-bar {
+  z-index: 99;
+  height: 5px;
+  background-color: $teal-color;
+}
+
 @import 'imports/helpers';
 @import 'imports/design_overrides';
 @import 'imports/navigation';
