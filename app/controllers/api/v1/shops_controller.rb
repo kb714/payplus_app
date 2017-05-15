@@ -38,7 +38,7 @@ module Api
     end
 
     def shop_params
-      params.require(:shop).permit(:name, :description, :image)
+      params.permit(:name, :description)
     end
   end
 end

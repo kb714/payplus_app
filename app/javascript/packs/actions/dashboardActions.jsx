@@ -26,11 +26,10 @@ export function closeShopCreateForm() {
     }
 }
 
-export function fetchCreateShop(data, image) {
+export function fetchCreateShop(data) {
     return dispatch => {
         dispatch({ type: ACTIONS.FETCH_CREATE_SHOP});
-        console.log('EN EL FETCH', image);
-        postShop(data, image)
+        postShop(data)
             .then((res) => {
                 dispatch({ type: ACTIONS.SUCCESS_CREATE_SHOP, payload: res.data});
             })

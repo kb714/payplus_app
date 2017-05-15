@@ -19,14 +19,11 @@ export function getShops() {
     return axios.get(`${API_URL}/shops`);
 }
 
-export function postShop(data, image) {
+export function postShop(data) {
     const { name, description } = data;
-    const shop = new FormData();
-    shop.append('name', name);
-    shop.append('description', description);
-    shop.append('image', image);
     return axios.post(`${API_URL}/shops`, {
-        shop,
+        name: name,
+        description: description,
         authenticity_token: TOKEN
     });
 }
