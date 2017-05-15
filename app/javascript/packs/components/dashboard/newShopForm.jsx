@@ -106,4 +106,9 @@ function mapStateProps(state) {
 
 const NewShopForm = Form.create()(ShopForm);
 
-export default connect(mapStateProps, { closeShopCreateForm, fetchCreateShop, resetCreateShop, fetchShops })(NewShopForm);
+export default connect(mapStateProps, {
+    closeShopCreateForm,
+    fetchCreateShop,
+    resetCreateShop,
+    fetchShops
+})(NewShopForm);
