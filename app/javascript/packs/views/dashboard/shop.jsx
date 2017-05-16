@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import {Col, Row} from "antd";
 // Todo
 import Application from "../layouts/application";
+import ShopComponent from '../../components/dashboard/shop';
 
 class ShopView extends React.Component {
 
@@ -17,7 +18,7 @@ class ShopView extends React.Component {
             <Application>
                 <Row type="flex" justify="center">
                     <Col xs={{span: 22}} md={{span: 22}} lg={{span: 20}} xl={{span: 16}}>
-                        Detalle tienda
+                        <ShopComponent/>
                     </Col>
                 </Row>
             </Application>
