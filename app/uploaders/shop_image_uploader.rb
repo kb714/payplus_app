@@ -23,11 +23,11 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [300, 300]
 
   version :thumb do
-    process resize_to_fit: [80, 80]
+    process resize_to_fit: [150, 150]
   end
 
   def extension_white_list
-    `%w(jpg jpeg gif png)]`
+    %w[jpg jpeg gif png]
   end
 
 end

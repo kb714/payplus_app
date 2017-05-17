@@ -1,0 +1,4 @@
+export const FETCH_SHOP = 'GET_SHOP';
+export const RECIEVE_SHOP = 'RECIEVE_SHOP';
+export const ERROR_RECIEVE_SHOP = 'ERROR_RECIEVE_SHOP';
+export const UPDATE_SHOP = 'UPDATE_SHOP';

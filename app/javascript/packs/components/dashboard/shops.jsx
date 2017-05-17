@@ -37,7 +37,6 @@ class Shops extends React.Component {
     }
 
     handleShopDetail(slug) {
-        console.log(slug);
         document.location.href = `/${slug}`;
     }
 
@@ -90,8 +89,8 @@ class Shops extends React.Component {
                                 <Card span="8" extra={destroy}>
                                     <div className="shop-image">
                                         <img
-                                            src="http://placehold.it/150x150"
-                                            alt="Shop Image"/>
+                                            src={item.image.thumb.url}
+                                            alt={item.name}/>
                                     </div>
                                     <div className="shop-action">
                                         <h3>{item.name}</h3>

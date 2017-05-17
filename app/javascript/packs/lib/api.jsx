@@ -4,6 +4,7 @@ const BASE_URL = 'http://localhost:3000';
 const API_URL = `${BASE_URL}/api/v1`;
 const TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+// SESSIONS
 export function postLogin(data) {
     const { email, password } = data;
     return axios.post(`${BASE_URL}/users/sign_in`, {
@@ -15,6 +16,7 @@ export function postLogin(data) {
     });
 }
 
+// ALL SHOPS
 export function getShops() {
     return axios.get(`${API_URL}/shops`);
 }
@@ -36,4 +38,9 @@ export function deleteShop(id) {
             authenticity_token: TOKEN
         }
     });
+}
+
+// SINGLE SHOP
+export function getShop(id) {
+    return axios.get(`${API_URL}/shops/${id}`);
 }

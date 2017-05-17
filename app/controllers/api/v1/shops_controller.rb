@@ -2,7 +2,7 @@ module Api
   # Api V1 for shops
   class V1::ShopsController < ApplicationController
     before_action :authenticate_user!
-    before_action :shop, only: [:update, :destroy]
+    before_action :shop, only: [:update, :destroy, :show]
 
     def index
       data = current_user.shops.all
@@ -18,8 +18,12 @@ module Api
       end
     end
 
+    def show
+      render json: @data
+    end
+
     def update
-      if @data.update(:shop_params)
+      if @data.update(shop_params)
         head :no_content
       else
         render json: @data.errors, status: :unprocessable_entity
@@ -38,7 +42,7 @@ module Api
     end
 
     def shop_params
-      params.permit(:name, :description)
+      params.permit(:name, :description, :image)
     end
   end
 end
