@@ -30,6 +30,11 @@ class ShopComponent extends React.Component {
             });
             message.success(`Imagen actualizada con éxito`);
             this.props.fetchShop(window.location.pathname);
+            setTimeout(() => {
+                this.setState({
+                    percent: 0
+                });
+            }, 3000);
         } else if (info.file.status === 'error') {
             message.error(`Error al actualizar la imagen.`);
             this.setState({
@@ -50,6 +55,7 @@ class ShopComponent extends React.Component {
             },
             onChange: this.handleUpload,
         };
+
         return(
             <div className="shop-container">
                 <Card loading={this.props.shop.loading}>
@@ -59,10 +65,12 @@ class ShopComponent extends React.Component {
                                 <img src={this.props.shop.data.image.thumb.url} alt={this.props.shop.data.name}/>
                                 <br/>
                                 <Upload {...changeImage}>
-                                    <Progress percent={this.state.percent} />
                                     <Button>
                                         <Icon type="upload" /> Cambiar Imagen
                                     </Button>
+                                    { this.state.percent > 0 &&
+                                    <Progress percent={this.state.percent}/>
+                                    }
                                 </Upload>
                             </div>
                         </Col>

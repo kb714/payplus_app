@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchShops, openShopCreateForm, destroyShop } from '../../actions/dashboardActions';
 //ui
-import { Spin, Card, Col, Row, Button, Modal } from 'antd';
+import '../../views/layouts/style.less';
+import { Spin, Col, Row, Button, Modal, Card } from 'antd';
 import NewShopForm from './newShopForm';
 
 class Shops extends React.Component {
